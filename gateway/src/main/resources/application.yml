@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: first-service
+          uri: http://localhost:8081
+          predicates: ##조건 first-service로 가면 8081로 가겠다는
+            - Path=/first-service/**
+        - id: second-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/second-service/**
+server:
+  port: 8080
+
